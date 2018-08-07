@@ -1,0 +1,6 @@
+D:\Sources\ConsoleProb5\ConsoleProb5\bin\Debug\ConsoleProb5.exe.config
+D:\Sources\ConsoleProb5\ConsoleProb5\bin\Debug\ConsoleProb5.exe
+D:\Sources\ConsoleProb5\ConsoleProb5\bin\Debug\ConsoleProb5.pdb
+D:\Sources\ConsoleProb5\ConsoleProb5\obj\Debug\ConsoleProb5.exe
+D:\Sources\ConsoleProb5\ConsoleProb5\obj\Debug\ConsoleProb5.pdb
+D:\Sources\ConsoleProb5\ConsoleProb5\obj\Debug\ConsoleProb5.csprojResolveAssemblyReference.cache
