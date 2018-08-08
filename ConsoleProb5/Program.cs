@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,7 @@ namespace ConsoleProb5
             // help to create ternary tree
             ArrayList arr = new ArrayList();
             arr.Add(root);
-                        
+
             for (int i = 1; i < VALUES.Length; i++)
             {
                 foreach (Tree item in arr.ToArray())
@@ -38,14 +38,14 @@ namespace ConsoleProb5
                     item.MinusNode = new Tree()
                     {
                         Value = VALUES[i],
-                        Sign="-"
+                        Sign = "-"
                     };
                     arr.Add(item.MinusNode);
 
                     item.PlusNode = new Tree()
                     {
                         Value = VALUES[i],
-                        Sign="+"
+                        Sign = "+"
                     };
                     arr.Add(item.PlusNode);
 
@@ -76,8 +76,8 @@ namespace ConsoleProb5
 
             if (IsLeaf(node))
             {
-                if(CheckSum(path))
-                    ShowPath(path);                
+                if (CheckSum(path))
+                    ShowPath(path);
             }
 
             path.RemoveAt(path.Count - 1);
@@ -97,10 +97,10 @@ namespace ConsoleProb5
         {
             foreach (Tree item in path)
             {
-                if(item.Sign == ".")
+                if (item.Sign == ".")
                     Console.Write(item.Value);
                 else
-                    Console.Write(item.Sign  + item.Value);
+                    Console.Write(item.Sign + item.Value);
             }
             Console.WriteLine();
         }
@@ -109,29 +109,19 @@ namespace ConsoleProb5
         public static bool CheckSum(ArrayList branch)
         {
             int sum = 0;
+            // temp branch
             ArrayList p = new ArrayList();
 
-            // clone array for values and no referenses
-            foreach (Tree item in branch)
-            {
-                p.Add(
-                        new Tree()
-                        {
-                            Value = item.Value,
-                            Sign = item.Sign
-                        }
-                    );
-            }
-
             // integrating nodes in array that has a concat operator
-            for(int i=0; i<p.Count;i++)
-            {                
-                if((p[i] as Tree).Sign == ".")
-                {
-                    Tree t = p[i - 1] as Tree;
-                    t.Value=int.Parse((p[i-1] as Tree).Value.ToString()+(p[i] as Tree).Value.ToString());
-                    p.RemoveAt(i--);
-                }
+            for (int i = 0; i < branch.Count; i++)
+            {
+                if ((branch[i] as Tree).Sign == ".")
+                    (p[p.Count - 1] as Tree).Value = int.Parse((p[p.Count - 1] as Tree).Value.ToString() + (branch[i] as Tree).Value.ToString());
+                else
+                    p.Add(new Tree {
+                        Value=(branch[i] as Tree).Value,
+                        Sign=(branch[i] as Tree).Sign
+                    });
             }
 
             //calculate sum of array and check it
@@ -145,7 +135,5 @@ namespace ConsoleProb5
             else
                 return false;
         }
-
-
     }
 }
