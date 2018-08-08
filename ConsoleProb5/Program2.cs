@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +12,7 @@ namespace ConsoleProb5
         static int TARGET_SUM = 100;
         static int[] VALUES = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
+        // اضافه کردن عدد و علامت دریافتی به ابتدای همه آیتم های آرایه
         static ArrayList Add(int digit, string sign, ArrayList branches)
         {
             for (int i = 0; i < branches.Count; i++)
@@ -40,16 +41,20 @@ namespace ConsoleProb5
                 }
             }
 
-            // f(1..9) => 1+f(2..9), 1-f(2..9), f(12..9)
+            // f(1..9)=100 => 1+f(2..9)=100, 1-f(2..9)=100, f(12..9)=100
 
+                       
+            // 1+f(2..9)=100 => f(2..9)=99
             ArrayList branch1 = f(sum - number, VALUES[index], index + 1);
 
+            // 1-f(2..9=100) => f(-2..9)=99
             ArrayList branch2 = f(sum - number, -VALUES[index], index + 1);
 
             int concatNumber = number >= 0
                 ? 10 * number + VALUES[index]
                 : 10 * number - VALUES[index];
 
+            // f(12..9)=100
             ArrayList branch3 = f(sum, concatNumber, index + 1);
 
             ArrayList results = new ArrayList();
